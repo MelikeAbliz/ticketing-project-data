@@ -2,6 +2,8 @@ package com.cydeo.entity;
 
 import com.cydeo.enums.Gender;
 import lombok.*;
+import org.hibernate.annotations.Where;
+import org.hibernate.sql.ast.Clause;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -14,6 +16,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Entity
 @Table(name = "users")
+@Where(clause="is_deleted=false")
 public class User extends BaseEntity {
 
     private String firstName;
