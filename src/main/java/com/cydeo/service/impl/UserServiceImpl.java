@@ -8,6 +8,7 @@ import com.cydeo.service.UserService;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -55,9 +56,20 @@ public class UserServiceImpl implements UserService {
         return findByUserName(user.getUserName());
     }
 
+    @Transactional
     @Override
     public void deleteByUserName(String userName) {
         userRepository.deleteByUserName(userName);
 
+    }
+
+    @Override
+    public void delete(String userName) {
+        //go to db and get that user with useName
+        User user = userRepository.findByUserName(userName);
+        //change the isDeleted field to true
+        user.setIsDeleted(true);
+        //save the object in the db
+        userRepository.save(user);
     }
 }
