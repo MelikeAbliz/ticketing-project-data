@@ -17,7 +17,7 @@ public class TicketingProjectDataApplication {
     //create a class annotated with @Configuration
     //write a method return the object that you are trying to add in the container
     //annotate this method with @Bean
-    @Bean
+    @Bean//it is not my class so we need to @Bean, so why you not create configuration class?bcz @SpringBootApplication includes @Configuration
     public ModelMapper mapper(){
         return new ModelMapper();
     }
