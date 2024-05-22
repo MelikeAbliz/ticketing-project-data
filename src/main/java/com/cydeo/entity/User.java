@@ -5,9 +5,7 @@ import lombok.*;
 import org.hibernate.annotations.Where;
 import org.hibernate.sql.ast.Clause;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Getter
@@ -29,6 +27,7 @@ public class User extends BaseEntity {
 
     @ManyToOne  //many users to one role, create foreign key,many always get owner
     private Role role;
+    @Enumerated(EnumType.STRING)
     private Gender gender;
 
 }
